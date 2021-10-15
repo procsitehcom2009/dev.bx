@@ -5,14 +5,15 @@ function printMessage(string $message): void
     echo $message . "\n";
 }
 
-function validateAge(int $age, array $movies): void
+function validateAge(string $age, array $movies): void
 {
     if (is_numeric($age))
     {
-        printMovies(restrictionsMoviesAge($age,$movies));
+        $validateAge = (int) $age;
+        ($validateAge>=0) ? printMovies(restrictionsMoviesAge($validateAge,$movies)) : print_r("Возраст не может быть отрицательным");
     }
     else
     {
-        printMessage("Введите корректный возраст");
+        printMessage("Возраст должен состоять только из цифр");
     }
 }
