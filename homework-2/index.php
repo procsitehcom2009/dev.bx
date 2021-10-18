@@ -6,4 +6,4 @@ require "functions.php";
 
 $age = readline("Введите ваш возраст:");
 $validatedAge = validateAge($age);
-($validateAge >= 0) ? printMovies(filterAvailableMovies($validateAge, $movies)) : print_r("Введите корректный возраст");
+($validatedAge >= 0) ? printMovies(filterAvailableMovies($validatedAge, $movies)) : print_r("Введите корректный возраст");
