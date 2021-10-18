@@ -2,18 +2,18 @@
 
 function printMessage(string $message): void
 {
-    echo $message . "\n";
+	echo $message . "\n";
 }
 
-function validateAge(string $age, array $movies): void
+function validateAge(string $age): int
 {
-    if (is_numeric($age))
-    {
-        $validateAge = (int) $age;
-        ($validateAge>=0) ? printMovies(filterAvailableMovies($validateAge,$movies)) : print_r("Возраст не может быть отрицательным");
-    }
-    else
-    {
-        printMessage("Возраст должен состоять только из цифр");
-    }
+	if (is_numeric($age))
+	{
+		return $validateAge = (int)$age;
+		return $validateAge;
+	}
+	else
+	{
+		return $validateAge = (int)-1;
+	}
 }
