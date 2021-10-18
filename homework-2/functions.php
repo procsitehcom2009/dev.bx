@@ -9,11 +9,10 @@ function validateAge(string $age): int
 {
 	if (is_numeric($age))
 	{
-		return $validateAge = (int)$age;
-		return $validateAge;
+		return $validatedAge = (int)$age;
 	}
 	else
 	{
-		return $validateAge = (int)-1;
+		return $validatedAge = -1;
 	}
 }
