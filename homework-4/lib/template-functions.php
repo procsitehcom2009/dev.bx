@@ -21,7 +21,7 @@ function renderLayout(string $content, array $templateData = []): void
 	$data = array_merge($templateData, [
 		'content' => $content,
 	]);
-	$result = renderTemplate($_SERVER['DOCUMENT_ROOT']."/resources/pages/layout.php", $data);
+	$result = renderTemplate("./resources/pages/layout.php", $data);
 
 	echo $result;
 }

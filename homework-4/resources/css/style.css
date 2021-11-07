@@ -1,0 +1,154 @@
+.wrapper{
+	display: flex;
+	overflow: hidden;
+	height: 100vh;
+	background: #f2f2f2;
+}
+
+.sidebar {
+	display: block;
+	background: #383838;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.header{
+	height: 100px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+}
+
+.content{
+	flex: 1;
+	overflow: auto;
+	padding: 20px 45px;
+}
+
+.menu {
+	display: block;
+	margin: 0 30px;
+}
+
+.menu-item{
+	display: block;
+	border-bottom: 1px solid rgba(242, 242, 242, .1);
+	margin: 0 15px;
+}
+
+.menu-item a{
+	display: flex;
+	align-items: center;
+	padding: 24px 15px;
+	text-decoration: none;
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 22px;
+	text-transform: uppercase;
+	color: #b7b7b7;
+}
+
+.menu-item:last-child{
+	border-bottom: none;
+}
+
+.menu-item a:hover,
+.menu-item--active a  {
+	#display: flex;
+	color: #fff;
+	background: rgba(255,255,255,0.05);
+}
+
+.movie-list--item{
+	display: inline-block;
+	margin: 15px;
+	width: 370px;
+	height: 700px;
+	background: #ffff;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+	border-radius: 20px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.movie-list--item-image{
+	display: block;
+	height: 430px;
+	background-size: cover;
+
+	border-radius: 20px 20px 0 0;
+}
+
+.movie-list--item-head{
+	display: block;
+	margin: 0 20px;
+	padding: 12px 0px 15px 0px;
+	border-bottom: 1px solid #F2F2F2;
+}
+
+.movie-list--item-title{
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 30px;
+	color: #333333;
+}
+
+.movie-list--item-subtitle{
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 25px;
+	color:#999999;
+}
+
+.movie-list--item-wrapper{
+	display: block;
+	height: 1px;
+	background: #F2F2F2;
+}
+
+.movie-list--item-description{
+	min-height: 100px;
+	margin: 0 20px;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333333;
+}
+
+.movie-list--item-bottom{
+	display: flex;
+	margin: 0 20px;
+	white-space: nowrap;
+	justify-content: space-between;
+}
+
+.movie-list--item-time{
+	position: relative;
+	padding-left: 25px;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 22px;
+	color: #CCCCCC;
+}
+
+.movie-list--item-time--icon{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: url("../images/icon-clock.svg") center;
+}
+
+.movie-list--item-info{
+	text-transform: uppercase;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 10px;
+	line-height: 22px;
+	color: #CCCCCC;
+}
