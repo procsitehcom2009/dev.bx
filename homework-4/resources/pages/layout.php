@@ -1,6 +1,8 @@
 <?php
 /** @var array $menu */
 /** @var string $content */
+/** @var array $config */
+/** @var array $genres */
 ?>
 <!doctype html>
 <html lang="ru">
@@ -24,8 +26,20 @@
 <div class="wrapper">
 	<div class="sidebar">
 		<ul class="menu">
+			<li class="menu-item">
+				<a href="<?= key($config['menu']) ?>.php"><?= current($config['menu']) ?></a>
+			</li>
+			<?next($config['menu']);?>
 			<?
-			print_r($menu); ?>
+			foreach ($genres as $code => $name): ?>
+				<li class="menu-item">
+					<a href="index.php?codeGenre=<?= $code ?>"><?= $name ?></a>
+				</li>
+			<?php
+			endforeach; ?>
+			<li class="menu-item">
+				<a href="<?= key($config['menu']) ?>.php"><?= current($config['menu'])  ?></a>
+			</li>
 		</ul>
 	</div>
 	<div class="container">

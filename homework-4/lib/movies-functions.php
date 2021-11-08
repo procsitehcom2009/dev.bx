@@ -7,3 +7,14 @@ function cutDescriptionMovies(array $movies, int $count):array
 	}
 	return $movies;
 }
+
+function getMoviesByGenere(array $movies, string $nameGenre): array
+{
+	$filterMovies = [];
+	foreach ($movies as $movie){
+		if (in_array($nameGenre,$movie['genres'],true)){
+			$filterMovies[]=$movie;
+		}
+	}
+	return $filterMovies;
+}
