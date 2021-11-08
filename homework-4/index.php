@@ -11,7 +11,7 @@ require_once "./data/movies.php";
 $codeGenre = $_GET['codeGenre'];
 
 if (isset($codeGenre)&&isset($genres[$codeGenre])){
-	$movies = getMoviesByGenere($movies,$genres[$codeGenre]);
+	$movies = getMoviesByGenre($movies,$genres[$codeGenre]);
 }
 
 $moviesListPage = renderTemplate("./resources/pages/movies-list.php", [

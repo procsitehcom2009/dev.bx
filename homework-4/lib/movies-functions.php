@@ -8,7 +8,7 @@ function cutDescriptionMovies(array $movies, int $count):array
 	return $movies;
 }
 
-function getMoviesByGenere(array $movies, string $nameGenre): array
+function getMoviesByGenre(array $movies, string $nameGenre): array
 {
 	$filterMovies = [];
 	foreach ($movies as $movie){
