@@ -6,7 +6,7 @@ require_once "./lib/movies-functions.php";
 require_once "./data/movies.php";
 
 $moviesListPage = renderTemplate("./resources/pages/movies-list.php", [
-	'movies' => cutDescriptionMovies($movies,200),
+	'movies' => cutDescriptionMovies($movies,150),
 ]);
 
 $config = [];

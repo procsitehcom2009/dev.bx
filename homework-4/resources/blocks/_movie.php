@@ -17,12 +17,7 @@
 			163 мин. / 02:43
 		</div>
 		<div class="movie-list--item-info">
-			<?
-			foreach ($movie['genres'] as $genre)
-			{
-				echo $genre . ",";
-			}
-			?>
+			<?=implode(', ',$movie['genres']) ?>
 		</div>
 	</div>
 </div>
