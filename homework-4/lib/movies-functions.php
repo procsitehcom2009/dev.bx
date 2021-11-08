@@ -18,3 +18,14 @@ function getMoviesByGenre(array $movies, string $nameGenre): array
 	}
 	return $filterMovies;
 }
+
+function getMovieById(array $movies, string $movieId):array
+{
+	$selectMovie = [];
+	foreach ($movies as $movie){
+		if (in_array($movieId,$movie,true)){
+			$selectMovie[] = $movie;
+		}
+	}
+	return $selectMovie;
+}
