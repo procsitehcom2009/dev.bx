@@ -2,8 +2,8 @@
 
 function cutDescriptionMovies(array $movies, int $count):array
 {
-	foreach ($movies as $movie){
-		$movie['description'] = mb_strimwidth($movie['description'], 0, $count, '...');
+	for ($i=0;$i<count($movies);$i++){
+		$movies[$i]['description']= mb_strimwidth($movies[$i]['description'], 0, $count, '...');
 	}
 	return $movies;
 }
