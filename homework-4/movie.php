@@ -15,7 +15,7 @@ if (!isset($movieId)||(!is_numeric($movieId))){
 }
 
 $moviePage = renderTemplate("./resources/pages/movie-detail.php", [
-	'movie' => getMovieById($movies,$movieId),
+	'movie' => getMovieById($movies,(int)$movieId),
 ]);
 
 renderLayout($moviePage, [

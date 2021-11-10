@@ -25,6 +25,7 @@
 <body>
 <div class="wrapper">
 	<div class="sidebar">
+		<div class="logo" style="background-image: url(./img/logo.svg)"></div>
 		<ul class="menu">
 			<li class="menu-item">
 				<a href="<?= key($config['menu']) ?>.php"><?= current($config['menu']) ?></a>
@@ -45,9 +46,7 @@
 	<div class="container">
 		<div class="header"></div>
 		<div class="content">
-			<div class="movie-list">
 				<?= $content ?>
-			</div>
 		</div>
 	</div>
 </div>

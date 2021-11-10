@@ -28,6 +28,13 @@
 	padding: 20px 45px;
 }
 
+.logo{
+	display: block;
+	margin: 59px 30px 30px;
+	height: 68px;
+	width: 210px;
+}
+
 .menu {
 	display: block;
 	margin: 0 30px;
@@ -66,6 +73,8 @@
 
 .movie-list--item{
 	display: inline-block;
+	position: relative;
+	overflow: hidden;
 	margin: 15px;
 	width: 370px;
 	height: 700px;
@@ -73,6 +82,43 @@
 	box-shadow: 0 3px 5px rgba(0,0,0,0.1);
 	border-radius: 20px;
 	font-family: 'Open Sans', sans-serif;
+}
+
+.movie-list--item-overlay{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.7);
+	z-index: 9;
+	opacity: 0;
+	transition: 0.2s;
+}
+
+.movie-list--item:hover .movie-list--item-overlay{
+	opacity: 1;
+}
+
+.movie-list--item-more {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 220px;
+	height: 56px;
+	background: #4EE7B0;
+	border-radius: 7px;
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	text-transform: uppercase;
+	color:#FFFFFF;
+	text-decoration: none;
 }
 
 .movie-list--item-image{
@@ -163,3 +209,4 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+

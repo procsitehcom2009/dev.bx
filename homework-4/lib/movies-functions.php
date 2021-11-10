@@ -19,7 +19,7 @@ function getMoviesByGenre(array $movies, string $nameGenre): array
 	return $filterMovies;
 }
 
-function getMovieById(array $movies, string $movieId):array
+function getMovieById(array $movies, int $movieId):array
 {
 	$selectMovie = [];
 	foreach ($movies as $movie){
