@@ -360,6 +360,19 @@
 
 .movie-detail-body-description-about{
 	display: block;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 22px;
+	color: #666666;
+}
+
+.movie-detail-body-description-about-name{
+	display: block;
+}
+
+.movie-detail-body-description-about-value{
+	display: inline-block;
 }
 
 .movie-detail-body-description-text{

@@ -17,7 +17,15 @@
 		<div class="movie-detail-body-img" style="background-image: url(data/images/<?= $movie[0]['id'] ?>.jpg)"></div>
 		<div class="movie-detail-body-description">
 			<div class="movie-detail-body-description-rating"></div>
-			<div class="movie-detail-body-description-about"></div>
+			<div class="movie-detail-body-description-about">
+				О фильме<br>
+				<div class="movie-detail-body-description-about-name">Год производства:</div>
+				<div class="movie-detail-body-description-about-value"><?=$movie[0]['release-date']?></div>
+				<div class="movie-detail-body-description-about-name">Режисер:</div>
+				<div class="movie-detail-body-description-about-value"><?=$movie[0]['director']?></div>
+				<div class="movie-detail-body-description-about-name">В главных ролях:</div>
+				<div class="movie-detail-body-description-about-value"><?=implode(',',$movie[0]['cast'])?></div>
+			</div>
 			<div class="movie-detail-body-description-text">
 				Описание<br>
 				<?=$movie[0]['description']?>
