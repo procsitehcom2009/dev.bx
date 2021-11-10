@@ -22,6 +22,61 @@
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
 }
 
+.header-main{
+	display: flex;
+	justify-content: space-between;
+	max-height: 100px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.header-main-search{
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+}
+
+.header-main-search-string{
+
+}
+
+.header-main-search-btn{
+	display: inline-block;
+	position: relative;
+	background: #E7A04E;
+	border-radius: 7px;
+}
+
+.header-main-search-btn a{
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 40px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.header-main-movie-add{
+	display: inline-block;
+	position: relative;
+	background: #4EE7B0;
+	border-radius: 7px;
+}
+
+.header-main-movie-add a{
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 40px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
 .content{
 	flex: 1;
 	overflow: auto;
@@ -227,6 +282,7 @@
 }
 
 .movie-detail-header-title {
+	display: block;
 	width: 720px;
 	height: 64px;
 	right: 453px;
@@ -239,6 +295,7 @@
 }
 
 .movie-detail-header-original-title{
+	display: inline-block;
 	width: 299px;
 	height: 42px;
 	right: 874px;
@@ -251,6 +308,7 @@
 }
 
 .movie-detail-header-age-restriction{
+	display: inline-block;
 	width: 39px;
 	height: 32px;
 	left: 623px;
@@ -284,7 +342,7 @@
 }
 
 .movie-detail-body-img{
-	display: block;
+	display: inline-block;
 	background-size: cover;
 	width: 469px;
 	height: 730px;
@@ -293,7 +351,27 @@
 }
 
 .movie-detail-body-description{
+	display: inline-block;
+}
 
+.movie-detail-body-description-rating{
+	display: block;
+}
+
+.movie-detail-body-description-about{
+	display: block;
+}
+
+.movie-detail-body-description-text{
+	display: block;
+	width: 577px;
+	height: 254px;
+	left: calc(50% - 577px/2 + 456px);
+	top: calc(50% - 254px/2 - 22.5px);
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 28px;
 }
 
 

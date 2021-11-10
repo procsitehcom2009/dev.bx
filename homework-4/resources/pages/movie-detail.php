@@ -15,5 +15,13 @@
 	</div>
 	<div class="movie-detail-body">
 		<div class="movie-detail-body-img" style="background-image: url(data/images/<?= $movie[0]['id'] ?>.jpg)"></div>
+		<div class="movie-detail-body-description">
+			<div class="movie-detail-body-description-rating"></div>
+			<div class="movie-detail-body-description-about"></div>
+			<div class="movie-detail-body-description-text">
+				Описание<br>
+				<?=$movie[0]['description']?>
+			</div>
+		</div>
 	</div>
 </div>

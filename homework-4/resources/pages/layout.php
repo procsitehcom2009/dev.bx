@@ -44,7 +44,21 @@
 		</ul>
 	</div>
 	<div class="container">
-		<div class="header"></div>
+		<div class="header">
+			<div class="header-main">
+				<div class="header-main-search">
+					<div class="header-main-search-string">
+
+					</div>
+					<div class="header-main-search-btn">
+						<a  href="#">Искать</a>
+					</div>
+				</div>
+				<div class="header-main-movie-add">
+					<a  href="movie-add.php">Добавить фильм</a>
+				</div>
+			</div>
+		</div>
 		<div class="content">
 				<?= $content ?>
 		</div>
