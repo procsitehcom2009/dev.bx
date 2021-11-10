@@ -210,3 +210,91 @@
 	text-overflow: ellipsis;
 }
 
+
+/* Деталька */
+.movie-detail {
+	display: inline-block;
+	position: absolute;
+	width: 1170px;
+	height: 985px;
+	left: 448px;
+	top: 128px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.movie-detail-header {
+	display: block;
+}
+
+.movie-detail-header-title {
+	width: 720px;
+	height: 64px;
+	right: 453px;
+	top: calc(50% - 64px/2 - 608.5px);
+	font-style: normal;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 65px;
+	color: #333333;
+}
+
+.movie-detail-header-original-title{
+	width: 299px;
+	height: 42px;
+	right: 874px;
+	top: calc(50% - 42px/2 - 547.5px);
+	font-style: normal;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 33px;
+	color: #999999;
+}
+
+.movie-detail-header-age-restriction{
+	width: 39px;
+	height: 32px;
+	left: 623px;
+	top: 237px;
+	background: rgba(242, 242, 242, 0.1);
+	border: 3px solid #CCCCCC;
+	box-sizing: border-box;
+	border-radius: 7px;
+}
+
+.movie-detail-header-age-restriction-text{
+	width: 24px;
+	height: 28px;
+	right: 1008px;
+	top: calc(50% - 28px/2 - 548.5px);
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 25px;
+	color: #CCCCCC;
+}
+
+.movie-detail-header-wrapper{
+	display: block;
+	height: 1px;
+	background: #F2F2F2;
+}
+
+.movie-detail-body{
+
+}
+
+.movie-detail-body-img{
+	display: block;
+	background-size: cover;
+	width: 469px;
+	height: 730px;
+	left: calc(50% - 469px/2 - 111px);
+	top: calc(50% - 730px/2 - 111.5px);
+}
+
+.movie-detail-body-description{
+
+}
+
+
+
