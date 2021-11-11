@@ -1,11 +1,8 @@
 <?php
 
-function cutDescriptionMovies(array $movies, int $count):array
+function cutDescriptionMovies(string $description, int $count):string
 {
-	for ($i=0;$i<count($movies);$i++){
-		$movies[$i]['description']= mb_strimwidth($movies[$i]['description'], 0, $count, '...');
-	}
-	return $movies;
+    return mb_strimwidth($description, 0, $count, '...');
 }
 
 function getMoviesByGenre(array $movies, string $nameGenre): array

@@ -8,14 +8,12 @@ require_once "./lib/movies-functions.php";
 /** @var array $genres */
 require_once "./data/movies.php";
 
-$codeGenre = $_GET['codeGenre'];
-
-if (isset($codeGenre)&&isset($genres[$codeGenre])){
-	$movies = getMoviesByGenre($movies,$genres[$codeGenre]);
+if (isset($_GET['codeGenre'])&&isset($genres[$_GET['codeGenre']])){
+	$movies = getMoviesByGenre($movies,$genres[$_GET['codeGenre']]);
 }
 
 $moviesListPage = renderTemplate("./resources/pages/movies-list.php", [
-	'movies' => cutDescriptionMovies($movies,150),
+	'movies' => $movies,
 ]);
 
 renderLayout($moviesListPage, [

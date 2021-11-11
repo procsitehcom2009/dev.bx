@@ -8,6 +8,7 @@
 .sidebar {
 	display: block;
 	background: #383838;
+	overflow-y: auto;
 }
 
 .container {
@@ -32,7 +33,7 @@
 }
 
 .header-main-search{
-	display: inline-block;
+	display: flex;
 	width: 100px;
 	height: 40px;
 }
@@ -46,6 +47,7 @@
 	position: relative;
 	background: #E7A04E;
 	border-radius: 7px;
+	padding: 0 20px;
 }
 
 .header-main-search-btn a{
@@ -64,6 +66,7 @@
 	position: relative;
 	background: #4EE7B0;
 	border-radius: 7px;
+	padding: 0 20px;
 }
 
 .header-main-movie-add a{
@@ -329,6 +332,20 @@
 	font-size: 18px;
 	line-height: 25px;
 	color: #CCCCCC;
+}
+
+.movie-detail-header-like{
+	display: inline-block;
+	width: 42px;
+	height: 37px;
+	background: url("../img/icon-with-like.svg")  center no-repeat;
+	cursor: pointer;
+	transform: scale(1,1);
+	transition: 0.2s;
+}
+
+.movie-detail-header-like:hover{
+	transform: scale(1.2,1.2);
 }
 
 .movie-detail-header-wrapper{

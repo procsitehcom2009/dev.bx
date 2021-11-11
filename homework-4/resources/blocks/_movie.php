@@ -12,7 +12,7 @@
 		<div class="movie-list--item-wrapper"></div>
 	</div>
 	<div class="movie-list--item-description">
-		<?= $movie['description'] ?>
+		<?= cutDescriptionMovies($movie['description'],150) ?>
 	</div>
 	<div class="movie-list--item-bottom">
 		<div class="movie-list--item-time">
