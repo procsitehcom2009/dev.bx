@@ -3,6 +3,8 @@
 /** @var string $content */
 /** @var array $config */
 /** @var array $genres */
+/** @var string $currentGenre */
+/** @var string $currentPage */
 ?>
 <!doctype html>
 <html lang="ru">
@@ -27,18 +29,19 @@
 	<div class="sidebar">
 		<div class="logo" style="background-image: url(./img/logo.svg)"></div>
 		<ul class="menu">
-			<li class="menu-item">
+			<li class="menu-item<?= (($currentGenre=="")&& ($currentPage==key($config['menu']))) ? "--active" : "" ?>">
 				<a href="<?= key($config['menu']) ?>.php"><?= current($config['menu']) ?></a>
 			</li>
 			<?next($config['menu']);?>
 			<?
 			foreach ($genres as $code => $name): ?>
-				<li class="menu-item">
+				<li class="menu-item<?= ($currentGenre==$code) ? "--active" : "" ?>">
 					<a href="index.php?codeGenre=<?= $code ?>"><?= $name ?></a>
 				</li>
+
 			<?php
 			endforeach; ?>
-			<li class="menu-item">
+			<li class="menu-item<?= (($currentGenre=="")&& ($currentPage==key($config['menu']))) ? "--active" : "" ?>">
 				<a href="<?= key($config['menu']) ?>.php"><?= current($config['menu'])  ?></a>
 			</li>
 		</ul>
