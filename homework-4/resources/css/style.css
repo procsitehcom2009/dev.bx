@@ -42,6 +42,30 @@
 
 }
 
+.header-main-search-string-icon{
+	position: absolute;
+	width: 24px;
+	height: 24px;
+}
+
+.header-main-search-string-input{
+	margin: 0 40px;
+	display: inline-block;
+	width: 492px;
+	height: 40px;
+	left: 479px;
+	top: 27px;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 40px;
+	outline: none;
+	border: none;
+	border: solid 1px #f2f2f2;
+}
+
+
+
 .header-main-search-btn{
 	display: inline-block;
 	position: relative;
@@ -234,18 +258,21 @@
 .movie-list--item-time{
 	position: relative;
 	padding-left: 25px;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 12px;
-	line-height: 22px;
-	color: #CCCCCC;
 }
 
 .movie-list--item-time--icon{
 	position: absolute;
 	width: 20px;
 	height: 20px;
-	background: url("../images/icon-clock.svg") center;
+}
+
+.movie-list--item-time--text{
+	margin: 0 20px;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 22px;
+	color: #CCCCCC;
 }
 
 .movie-list--item-info{
@@ -338,7 +365,7 @@
 	display: inline-block;
 	width: 42px;
 	height: 37px;
-	background: url("../img/icon-with-like.svg")  center no-repeat;
+	background: url("./img/icon-like.svg")  center no-repeat;
 	cursor: pointer;
 	transform: scale(1,1);
 	transition: 0.2s;

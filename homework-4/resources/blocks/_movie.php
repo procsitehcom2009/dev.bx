@@ -16,8 +16,8 @@
 	</div>
 	<div class="movie-list--item-bottom">
 		<div class="movie-list--item-time">
-			<div class="movie-list--item-time--icon"></div>
-			<?= $movie['duration']?> мин. / <?=floor($movie['duration']/60)?>:<?=($movie['duration']%60)?>
+			<div class="movie-list--item-time--icon" style="background-image: url(./img/icon-clock.svg)"></div>
+			<div class="movie-list--item-time--text"><?= $movie['duration']?> мин. / <?=floor($movie['duration']/60)?>:<?=($movie['duration']%60)?></div>
 		</div>
 		<div class="movie-list--item-info">
 			<?=implode(', ',$movie['genres']) ?>

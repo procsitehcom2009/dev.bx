@@ -48,7 +48,8 @@
 			<div class="header-main">
 				<div class="header-main-search">
 					<div class="header-main-search-string">
-
+						<div class="header-main-search-string-icon" style="	background: url(./img/logo-search.png)"></div>
+						<input class="header-main-search-string-input" type="text" placeholder="Поиск по каталогу...">
 					</div>
 					<div class="header-main-search-btn">
 						<a  href="#">Искать</a>
