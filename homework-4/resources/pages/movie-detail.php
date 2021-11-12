@@ -11,7 +11,7 @@
 				<?=$movie[0]['age-restriction']?>+
 			</div>
 		</div>
-        <div class="movie-detail-header-like"></div>
+        <div class="movie-detail-header-like" style="background-image: url(./img/icon-like.svg)"></div>
 		<div class="movie-detail-header-wrapper"></div>
 	</div>
 	<div class="movie-detail-body">

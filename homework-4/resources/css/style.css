@@ -298,8 +298,6 @@
 
 /* Деталька */
 .movie-detail {
-	display: inline-block;
-	position: absolute;
 	width: 1170px;
 	height: 985px;
 	left: 448px;
@@ -365,7 +363,6 @@
 	display: inline-block;
 	width: 42px;
 	height: 37px;
-	background: url("./img/icon-like.svg")  center no-repeat;
 	cursor: pointer;
 	transform: scale(1,1);
 	transition: 0.2s;
