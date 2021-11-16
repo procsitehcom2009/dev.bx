@@ -32,9 +32,9 @@
 			</li>
 			<?next($config['menu']);?>
 			<?
-			foreach ($genres as $code => $name): ?>
-				<li class="menu-item<?= ($currentGenre==$code) ? "--active" : "" ?>">
-					<a href="index.php?codeGenre=<?= $code ?>"><?= $name ?></a>
+			foreach ($genres as $genre): ?>
+				<li class="menu-item<?= ($currentGenre==$genre['CODE']) ? "--active" : "" ?>">
+					<a href="index.php?codeGenre=<?= $genre['CODE'] ?>"><?= $genre['NAME'] ?></a>
 				</li>
 
 			<?php

@@ -3,24 +3,24 @@
 ?>
 <div class="movie-list--item">
 	<div class="movie-list--item-overlay">
-		<a href="./movie.php?movieId=<?=$movie['id']?>" class="movie-list--item-more">Подробнее</a>
+		<a href="./movie.php?movieId=<?=$movie['ID']?>" class="movie-list--item-more">Подробнее</a>
 	</div>
-	<div class="movie-list--item-image" style="background-image: url(data/images/<?= $movie['id'] ?>.jpg)"></div>
+	<div class="movie-list--item-image" style="background-image: url(data/images/<?= $movie['ID'] ?>.jpg)"></div>
 	<div class="movie-list--item-head">
-		<div class="movie-list--item-title"><?= $movie['title'] ?> (<?= $movie['release-date'] ?>)</div>
-		<div class="movie-list--item-subtitle"><?= $movie['original-title'] ?></div>
+		<div class="movie-list--item-title"><?= $movie['TITLE'] ?> (<?= $movie['RELEASE_DATE'] ?>)</div>
+		<div class="movie-list--item-subtitle"><?= $movie['ORIGINAL_TITLE'] ?></div>
 		<div class="movie-list--item-wrapper"></div>
 	</div>
 	<div class="movie-list--item-description">
-		<?= cutDescriptionMovies($movie['description'],150) ?>
+		<?= cutDescriptionMovies($movie['DESCRIPTION'],150) ?>
 	</div>
 	<div class="movie-list--item-bottom">
 		<div class="movie-list--item-time">
 			<div class="movie-list--item-time--icon" style="background-image: url(./img/icon-clock.svg)"></div>
-			<div class="movie-list--item-time--text"><?= $movie['duration']?> мин. / <?=floor($movie['duration']/60)?>:<?=($movie['duration']%60)?></div>
+			<div class="movie-list--item-time--text"><?= $movie['DURATION']?> мин. / <?=floor($movie['DURATION']/60)?>:<?=($movie['DURATION']%60)?></div>
 		</div>
 		<div class="movie-list--item-info">
-			<?=implode(', ',$movie['genres']) ?>
+			<?=$movie['GENRES'] ?>
 		</div>
 	</div>
 </div>

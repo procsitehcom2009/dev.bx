@@ -4,9 +4,12 @@ require_once "./config/app.php";
 require_once "./lib/template-functions.php";
 require_once "./lib/helper-functions.php";
 require_once "./lib/movies-functions.php";
+require_once "./lib/helper-db.php";
 /** @var array $movies */
 /** @var array $genres */
-require_once "./data/movies.php";
+
+$database = connectionDB($config['db']);
+$genres = getGenres($database);
 
 $movieId = $_GET['movieId'];
 
@@ -15,7 +18,7 @@ if (!isset($movieId)||(!is_numeric($movieId))){
 }
 
 $moviePage = renderTemplate("./resources/pages/movie-detail.php", [
-	'movie' => getMovieById($movies,(int)$movieId),
+	'movie' => getMovieById($database,(int)$movieId),
 ]);
 
 renderLayout($moviePage, [

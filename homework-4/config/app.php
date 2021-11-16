@@ -8,8 +8,8 @@ $config = [
 	],
     'db'=>[
         'host'=>'localhost',
-        'user'=>'student',
+        'username'=>'student',
         'password'=>'student',
-        'db_name'=>'dev',
+        'dbName'=>'dev',
     ]
 ];
