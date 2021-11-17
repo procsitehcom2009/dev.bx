@@ -35,38 +35,7 @@ function issetGenreCode(string $code, array $genres): bool
 
 function getMoviesByGenre($database, array $genres, string $codeGenre = null): array
 {
-    if (!$codeGenre == null) {
-        $query = "SELECT m.ID as ID,
-       m.TITLE,
-       m.ORIGINAL_TITLE,
-       m.DESCRIPTION,
-       m.DURATION,
-       m.AGE_RESTRICTION,
-       m.RELEASE_DATE,
-       m.RATING,
-       d.NAME as DIRECTOR_NAME,
-       GROUP_CONCAT(mg.GENRE_ID) as GENRES
-FROM movie m INNER JOIN director d on m.DIRECTOR_ID = d.ID
-INNER JOIN movie_genre mg on m.ID = mg.MOVIE_ID
-INNER JOIN genre g on mg.GENRE_ID = g.ID
-WHERE mg.MOVIE_ID=m.ID and g.CODE='{$codeGenre}'
-GROUP BY m.ID;";
-    } else {
-        $query = "SELECT m.ID as ID,
-       m.TITLE,
-       m.ORIGINAL_TITLE,
-       m.DESCRIPTION,
-       m.DURATION,
-       m.AGE_RESTRICTION,
-       m.RELEASE_DATE,
-       m.RATING,
-       d.NAME as DIRECTOR_NAME,
-       GROUP_CONCAT(mg.GENRE_ID) as GENRES
-FROM movie m INNER JOIN director d on m.DIRECTOR_ID = d.ID
-INNER JOIN movie_genre mg on m.ID = mg.MOVIE_ID
-WHERE mg.MOVIE_ID=m.ID
-GROUP BY m.ID;";
-    }
+	$query = generateSqlQueryMovies($codeGenre,null);
 
     $result = mysqli_query($database, $query);
     if (!$result) {
@@ -93,20 +62,7 @@ function getNameGenreById(string $movieGenres, array $genres): string
 
 function getMovieById($database, int $movieId): array
 {
-    $query = "SELECT m.ID as ID,
-       m.TITLE,
-       m.ORIGINAL_TITLE,
-       m.DESCRIPTION,
-       m.DURATION,
-       m.AGE_RESTRICTION,
-       m.RELEASE_DATE,
-       m.RATING,
-       d.NAME as DIRECTOR_NAME,
-       GROUP_CONCAT(mg.GENRE_ID) as GENRES
-FROM movie m INNER JOIN director d on m.DIRECTOR_ID = d.ID
-INNER JOIN movie_genre mg on m.ID = mg.MOVIE_ID
-WHERE mg.MOVIE_ID=m.ID and m.ID={$movieId}
-GROUP BY m.ID;";
+    $query = generateSqlQueryMovies(null,$movieId);
 
     $result = mysqli_query($database, $query);
     if (!$result) {
@@ -116,4 +72,29 @@ GROUP BY m.ID;";
     $movie = mysqli_fetch_assoc($result);
 
     return $movie;
+}
+
+function generateSqlQueryMovies(string $codeGenre=null, int $movieId=null): string
+{
+	$query = "SELECT m.ID as ID,
+       m.TITLE,
+       m.ORIGINAL_TITLE,
+       m.DESCRIPTION,
+       m.DURATION,
+       m.AGE_RESTRICTION,
+       m.RELEASE_DATE,
+       m.RATING,
+       d.NAME as DIRECTOR_NAME,
+       (SELECT GROUP_CONCAT(GENRE_ID) FROM movie_genre mg WHERE mg.MOVIE_ID=m.ID) as GENRES,
+       (SELECT GROUP_CONCAT(ACTOR_ID) FROM movie_actor ma WHERE ma.MOVIE_ID=m.ID) as CAST
+FROM movie m INNER JOIN director d on m.DIRECTOR_ID = d.ID";
+	if ($codeGenre!=null)
+	{
+		$query .=" INNER JOIN movie_genre g on m.ID = g.MOVIE_ID WHERE g.GENRE_ID=(SELECT DISTINCT ID FROM genre WHERE genre.CODE='{$codeGenre}')";
+	}
+	if ($movieId!=null){
+		$query .=" WHERE m.ID={$movieId}";
+	}
+	$query .=" GROUP BY m.ID;";
+	return $query;
 }
