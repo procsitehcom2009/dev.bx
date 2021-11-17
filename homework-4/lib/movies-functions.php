@@ -69,9 +69,36 @@ function getMovieById($database, int $movieId): array
         trigger_error($database->error, E_USER_ERROR);
     }
 
-    $movie = mysqli_fetch_assoc($result);
+    $movie = mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+	for ($count=0;$count<count($movie);$count++)
+	{
+		$movie[$count]['CAST']=getNameCastById(getCastsById($database,$movie[$count]['CAST']));
+	}
 
     return $movie;
+}
+
+function getCastsById($database,string $casts): array
+{
+	$query = "SELECT ID,NAME FROM actor WHERE ID IN ({$casts});";
+
+	$result = mysqli_query($database, $query);
+	if (!$result) {
+		trigger_error($database->error, E_USER_ERROR);
+	}
+
+	$selectedCasts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+	return $selectedCasts;
+}
+
+function getNameCastById(array $casts):string
+{
+	for ($count=0;$count<count($casts);$count++){
+		$nameCasts [] = $casts[$count]['NAME'];
+	}
+	return implode(",",$nameCasts);
 }
 
 function generateSqlQueryMovies(string $codeGenre=null, int $movieId=null): string
