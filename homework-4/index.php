@@ -13,17 +13,39 @@ require_once "./lib/helper-db.php";
 $database = connectionDB($config['db']);
 $genres = getGenres($database);
 
-if (isset($_GET['codeGenre'])&&(issetGenreCode($_GET['codeGenre'],$genres)==true)){
-    $codeGenre = $_GET['codeGenre'];
-    $movies = getMoviesByGenre($database, $genres, $codeGenre);
-} else {
+if ((!isset($_GET['searchName'])&&(!isset($_GET['codeGenre']))))
+{
     $codeGenre = "";
     $movies = getMoviesByGenre($database, $genres);
 }
 
-$moviesListPage = renderTemplate("./resources/pages/movies-list.php", [
-	'movies' => $movies,
-]);
+if (isset($_GET['searchName']))
+{
+    $codeGenre = "";
+    $searchName = $_GET['searchName'];
+    $searchName = trim($searchName);
+    $searchName = stripslashes($searchName);
+    $searchName = htmlspecialchars($searchName);
+    $movies = searchMoviesByName($database,$genres,$searchName);
+}
+
+if (isset($_GET['codeGenre'])&&(issetGenreCode($_GET['codeGenre'],$genres)==true)){
+    $codeGenre = $_GET['codeGenre'];
+    $movies = getMoviesByGenre($database, $genres, $codeGenre);
+}
+
+if (!empty($movies))
+{
+    $moviesListPage = renderTemplate("./resources/pages/movies-list.php", [
+        'movies' => $movies,
+    ]);
+} else
+{
+    $moviesListPage = renderTemplate("./resources/pages/not-found.php", [
+        'searchName' => $searchName,
+    ]);
+}
+
 
 renderLayout($moviesListPage, [
 	'config' => $config,

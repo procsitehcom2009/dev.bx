@@ -10,3 +10,9 @@ function favorite_like_call(id){
         document.getElementById(id).style.backgroundImage = "url('./img/icon-like.svg')";
     }
 }
+
+function searchMovies(btnId,inputId){
+    var searchName = document.getElementById(inputId).value;
+    var redirectUrl = document.location.protocol+"//"+document.location.hostname+document.location.pathname+"?searchName="+searchName;
+    document.location.href = redirectUrl;
+}

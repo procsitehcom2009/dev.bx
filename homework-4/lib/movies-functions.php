@@ -23,6 +23,24 @@ function getGenres($database): array
     return $formatGenres;
 }
 
+function searchMoviesByName($database,array $genres, string $searchName):array
+{
+    $query = generateSqlQueryMovies(null,null,$searchName);
+
+    $result = mysqli_query($database, $query);
+    if (!$result) {
+        trigger_error($database->error, E_USER_ERROR);
+    }
+
+    $movies = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    for ($count = 0; $count<count($movies);$count++) {
+        $movies[$count]['GENRES'] = getNameGenreById($movies[$count]['GENRES'],$genres);
+    }
+
+    return $movies;
+}
+
 function issetGenreCode(string $code, array $genres): bool
 {
     foreach ($genres as $genre) {
@@ -35,7 +53,7 @@ function issetGenreCode(string $code, array $genres): bool
 
 function getMoviesByGenre($database, array $genres, string $codeGenre = null): array
 {
-	$query = generateSqlQueryMovies($codeGenre,null);
+	$query = generateSqlQueryMovies($codeGenre,null,null);
 
     $result = mysqli_query($database, $query);
     if (!$result) {
@@ -62,7 +80,7 @@ function getNameGenreById(string $movieGenres, array $genres): string
 
 function getMovieById($database, int $movieId): array
 {
-    $query = generateSqlQueryMovies(null,$movieId);
+    $query = generateSqlQueryMovies(null,$movieId,null);
 
     $result = mysqli_query($database, $query);
     if (!$result) {
@@ -101,7 +119,7 @@ function getNameCastById(array $casts):string
 	return implode(",",$nameCasts);
 }
 
-function generateSqlQueryMovies(string $codeGenre=null, int $movieId=null): string
+function generateSqlQueryMovies(string $codeGenre=null, int $movieId=null,string $searchName=null): string
 {
 	$query = "SELECT m.ID as ID,
        m.TITLE,
@@ -122,6 +140,10 @@ FROM movie m INNER JOIN director d on m.DIRECTOR_ID = d.ID";
 	if ($movieId!=null){
 		$query .=" WHERE m.ID={$movieId}";
 	}
+    if ($searchName!=null)
+    {
+        $query .=" WHERE m.TITLE LIKE '%{$searchName}%'";
+    }
 	$query .=" GROUP BY m.ID;";
 	return $query;
 }

@@ -50,10 +50,10 @@
 				<div class="header-main-search">
 					<div class="header-main-search-string">
 						<div class="header-main-search-string-icon" style="	background: url(./img/logo-search.png)"></div>
-						<input class="header-main-search-string-input" type="text" placeholder="Поиск по каталогу...">
+						<input id="search-input" class="header-main-search-string-input" type="text" placeholder="Поиск по каталогу...">
 					</div>
 					<div class="header-main-search-btn">
-						<a  href="#">Искать</a>
+						<a  href="javascript:void(0);" id="search-btn" onclick="searchMovies('search-btn','search-input')">Искать</a>
 					</div>
 				</div>
 				<div class="header-main-movie-add">
