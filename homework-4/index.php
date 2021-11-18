@@ -10,7 +10,7 @@ require_once "./lib/helper-db.php";
 /** @var array $movies */
 /** @var array $genres */
 
-$database = connectionDB($config['db']);
+$database = getDBConnection($config['db']);
 $genres = getGenres($database);
 
 if ((!isset($_GET['searchName'])&&(!isset($_GET['codeGenre']))))

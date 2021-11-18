@@ -25,7 +25,7 @@ function getGenres($database): array
 
 function searchMoviesByName($database,array $genres, string $searchName):array
 {
-    $query = generateSqlQueryMovies(null,null,$searchName);
+    $query = generateSqlQueryMovies(['searchName'=>$searchName]);
 
     $result = mysqli_query($database, $query);
     if (!$result) {
@@ -53,7 +53,7 @@ function issetGenreCode(string $code, array $genres): bool
 
 function getMoviesByGenre($database, array $genres, string $codeGenre = null): array
 {
-	$query = generateSqlQueryMovies($codeGenre,null,null);
+	$query = generateSqlQueryMovies(['codeGenre'=>$codeGenre]);
 
     $result = mysqli_query($database, $query);
     if (!$result) {
@@ -80,7 +80,7 @@ function getNameGenreById(string $movieGenres, array $genres): string
 
 function getMovieById($database, int $movieId): array
 {
-    $query = generateSqlQueryMovies(null,$movieId,null);
+    $query = generateSqlQueryMovies(['movieId'=>$movieId]);
 
     $result = mysqli_query($database, $query);
     if (!$result) {
@@ -119,7 +119,7 @@ function getNameCastById(array $casts):string
 	return implode(",",$nameCasts);
 }
 
-function generateSqlQueryMovies(string $codeGenre=null, int $movieId=null,string $searchName=null): string
+function generateSqlQueryMovies(array $SqlData = []): string
 {
 	$query = "SELECT m.ID as ID,
        m.TITLE,
@@ -133,16 +133,16 @@ function generateSqlQueryMovies(string $codeGenre=null, int $movieId=null,string
        (SELECT GROUP_CONCAT(GENRE_ID) FROM movie_genre mg WHERE mg.MOVIE_ID=m.ID) as GENRES,
        (SELECT GROUP_CONCAT(ACTOR_ID) FROM movie_actor ma WHERE ma.MOVIE_ID=m.ID) as CAST
 FROM movie m INNER JOIN director d on m.DIRECTOR_ID = d.ID";
-	if ($codeGenre!=null)
+	if (isset($SqlData['codeGenre']))
 	{
-		$query .=" INNER JOIN movie_genre g on m.ID = g.MOVIE_ID WHERE g.GENRE_ID=(SELECT DISTINCT ID FROM genre WHERE genre.CODE='{$codeGenre}')";
+		$query .=" INNER JOIN movie_genre g on m.ID = g.MOVIE_ID WHERE g.GENRE_ID=(SELECT DISTINCT ID FROM genre WHERE genre.CODE='{$SqlData['codeGenre']}')";
 	}
-	if ($movieId!=null){
-		$query .=" WHERE m.ID={$movieId}";
+	if (isset($SqlData['movieId'])){
+		$query .=" WHERE m.ID={$SqlData['movieId']}";
 	}
-    if ($searchName!=null)
+    if (isset($SqlData['searchName']))
     {
-        $query .=" WHERE m.TITLE LIKE '%{$searchName}%'";
+        $query .=" WHERE m.TITLE LIKE '%{$SqlData['searchName']}%'";
     }
 	$query .=" GROUP BY m.ID;";
 	return $query;
