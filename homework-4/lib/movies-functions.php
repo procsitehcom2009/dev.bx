@@ -140,7 +140,7 @@ FROM movie m INNER JOIN director d on m.DIRECTOR_ID = d.ID";
 	}
 	if (isset($SqlData['movieId'])){
         $movieId = (int)$SqlData['movieId'];
-		$query .=" WHERE m.ID={ $movieId}";
+		$query .=" WHERE m.ID={$movieId}";
 	}
     if (isset($SqlData['searchName']))
     {
