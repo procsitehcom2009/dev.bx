@@ -113,6 +113,7 @@ export class List
 		const addButton = document.createElement('button');
 		addButton.innerText = 'Add';
 		addButton.id = 'addButton';
+		addButton.title='Add';
 		addButton.addEventListener('click', this.handleAddButtonClick.bind(this));
 
 		addContainer.append(addInput);
@@ -124,6 +125,7 @@ export class List
 
 	handleAddButtonClick()
 	{
+		console.log("123");
 		const addInput = this.container.querySelector('[class="calendar-new-item-title"]');
 		const addButton = this.container.querySelector('[id="addButton"]');
 		if (addInput)
@@ -133,7 +135,7 @@ export class List
 				return;
 			}
 
-			if (addButton.title='EditSave')
+			if (addButton.title=='EditSave')
 			{
 				this.items[addButton.value].title = addInput.value;
 				this.renderActionsEdit(-1);
