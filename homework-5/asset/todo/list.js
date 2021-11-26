@@ -90,7 +90,7 @@ export class List
 		{
 			addInput.value='';
 			addButton.innerText = 'Add';
-			addButton.removeAttribute('title');
+			addButton.title = 'Add';
 			addButton.removeAttribute('value');
 		}
 	}
@@ -125,7 +125,6 @@ export class List
 
 	handleAddButtonClick()
 	{
-		console.log("123");
 		const addInput = this.container.querySelector('[class="calendar-new-item-title"]');
 		const addButton = this.container.querySelector('[id="addButton"]');
 		if (addInput)
