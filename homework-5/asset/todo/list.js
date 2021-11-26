@@ -71,15 +71,29 @@ export class List
 		const index = this.items.indexOf(item);
 		if (index > -1)
 		{
-			this.items.splice(index, 1);
-			this.edit().then(()=> {
-				this.renderItems();
-			}).catch((error)=>{
-				console.error('Error trying to edit item');
-			})
+			this.renderActionsEdit(index);
 		}
 	}
 
+	renderActionsEdit(index)
+	{
+		const addInput = this.container.querySelector('[class="calendar-new-item-title"]');
+		const addButton = this.container.querySelector('[id="addButton"]');
+		if (index>-1)
+		{
+			addInput.value=this.items[index].title;
+			addButton.title = 'EditSave';
+			addButton.value = index;
+			addButton.innerText = 'EditSave';
+		}
+		else
+		{
+			addInput.value='';
+			addButton.innerText = 'Add';
+			addButton.removeAttribute('title');
+			addButton.removeAttribute('value');
+		}
+	}
 
 	renderItems()
 	{
@@ -98,6 +112,7 @@ export class List
 		addInput.classList.add('calendar-new-item-title');
 		const addButton = document.createElement('button');
 		addButton.innerText = 'Add';
+		addButton.id = 'addButton';
 		addButton.addEventListener('click', this.handleAddButtonClick.bind(this));
 
 		addContainer.append(addInput);
@@ -110,14 +125,23 @@ export class List
 	handleAddButtonClick()
 	{
 		const addInput = this.container.querySelector('[class="calendar-new-item-title"]');
+		const addButton = this.container.querySelector('[id="addButton"]');
 		if (addInput)
 		{
 			if (addInput.value.length === 0)
 			{
 				return;
 			}
-			this.items.push(this.createItem({title: addInput.value}));
-			addInput.value = '';
+
+			if (addButton.title='EditSave')
+			{
+				this.items[addButton.value].title = addInput.value;
+				this.renderActionsEdit(-1);
+			} else
+			{
+				this.items.push(this.createItem({title: addInput.value}));
+				addInput.value = '';
+			}
 
 			this.save().then(() => {
 				this.renderItems();
@@ -155,24 +179,6 @@ export class List
 				reject(result);
 			}).finally(() => {
 				this.stopProgress()
-			});
-		});
-	}
-
-	edit()
-	{
-		return new Promise((resolve, reject)=> {
-			if (this.isProgress)
-			{
-				reject('Another action in progress');
-				return;
-			}
-			this.startProgress();
-			const data = {
-				items: []
-			};
-			this.items.forEach((item) => {
-				data.items.push(item.getData());
 			});
 		});
 	}
