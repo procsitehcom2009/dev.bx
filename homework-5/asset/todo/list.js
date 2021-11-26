@@ -1,4 +1,4 @@
-import {Item} from "/asset/todo/item.js";
+import {Item} from "./item.js";
 
 export class List
 {
@@ -47,6 +47,7 @@ export class List
 
 	createItem(itemData)
 	{
+		itemData.editButtonHandler = this.handleEditeButtonClick.bind(this);
 		itemData.deleteButtonHandler = this.handleDeleteButtonClick.bind(this);
 		return new Item(itemData);
 	}
@@ -64,6 +65,21 @@ export class List
 			})
 		}
 	}
+
+	handleEditeButtonClick(item)
+	{
+		const index = this.items.indexOf(item);
+		if (index > -1)
+		{
+			this.items.splice(index, 1);
+			this.edit().then(()=> {
+				this.renderItems();
+			}).catch((error)=>{
+				console.error('Error trying to edit item');
+			})
+		}
+	}
+
 
 	renderItems()
 	{
@@ -121,7 +137,7 @@ export class List
 			}
 			this.startProgress();
 			return fetch(
-				'/ajax.php?action=load',
+				'./ajax.php?action=load',
 				{
 					method: "POST",
 				}
@@ -143,6 +159,24 @@ export class List
 		});
 	}
 
+	edit()
+	{
+		return new Promise((resolve, reject)=> {
+			if (this.isProgress)
+			{
+				reject('Another action in progress');
+				return;
+			}
+			this.startProgress();
+			const data = {
+				items: []
+			};
+			this.items.forEach((item) => {
+				data.items.push(item.getData());
+			});
+		});
+	}
+
 	save()
 	{
 		return new Promise((resolve, reject) => {
@@ -160,7 +194,7 @@ export class List
 			});
 
 			return fetch(
-				'/ajax.php?action=save',
+				'./ajax.php?action=save',
 				{
 					method: "POST",
 					headers: {

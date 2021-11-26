@@ -1,14 +1,19 @@
 export class Item
 {
 	title;
+	editButtonHandler;
 	deleteButtonHandler;
 
-	constructor({title, deleteButtonHandler})
+	constructor({title, editButtonHandler, deleteButtonHandler})
 	{
 		this.title = String(title);
 		if (typeof deleteButtonHandler === 'function')
 		{
 			this.deleteButtonHandler = deleteButtonHandler;
+		}
+		if (typeof editButtonHandler === 'function')
+		{
+			this.editButtonHandler = editButtonHandler;
 		}
 	}
 
@@ -27,6 +32,12 @@ export class Item
 		container.append(title);
 
 		const buttonsContainer = document.createElement('div');
+
+		const editButton = document.createElement('button');
+		editButton.innerText = 'Edit';
+		buttonsContainer.append(editButton);
+		editButton.addEventListener('click', this.handleEditButtonClick.bind(this));
+
 		const deleteButton = document.createElement('button');
 		deleteButton.innerText = 'Delete';
 		buttonsContainer.append(deleteButton);
@@ -35,13 +46,21 @@ export class Item
 		container.append(buttonsContainer);
 
 		return container;
-	}
+		}
 
 	handleDeleteButtonClick()
 	{
 		if (this.deleteButtonHandler)
 		{
 			this.deleteButtonHandler(this);
+		}
+	}
+
+	handleEditButtonClick()
+	{
+		if (this.editButtonHandler)
+		{
+			this.editButtonHandler(this);
 		}
 	}
 }
