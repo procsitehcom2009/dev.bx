@@ -65,4 +65,15 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 
 		static::assertEquals('ST00012|Name=|PersonalAcc=|BankName=|BIC=|CorrespAcc=', $data);
 	}
+
+    public function testGetFieldValueMaximumLength():void
+    {
+        $dataGenerator = new \App\DataGenerator\FinancialTransactionsRu();
+
+        $dataGenerator->setFields([]);
+
+        $data = $dataGenerator->getFieldValueMaximumLength('Name');
+
+        static::assertEquals(null,$data);
+    }
 }
