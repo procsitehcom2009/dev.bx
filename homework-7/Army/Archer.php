@@ -2,7 +2,7 @@
 
 namespace Army;
 
-class Archar implements Warrior
+class Archer implements Warrior
 {
     public function power(): int
     {
