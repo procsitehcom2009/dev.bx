@@ -4,5 +4,5 @@ namespace Army;
 
 interface Weapon
 {
-	public function weapon(): string;
+	public function typeWeapon(): string;
 }

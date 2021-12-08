@@ -2,7 +2,7 @@
 
 namespace Army;
 
-class PikeForge extends Armory
+class PikeArmory extends Armory
 {
 	public function createWeapon():Weapon
 	{

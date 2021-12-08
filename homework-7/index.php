@@ -16,9 +16,9 @@ $forges = [
 for ($i=0;$i<10;$i++)
 {
 	$forge = $forges[rand(0,1)];
-    $armyA[] = array(\Army\Helper::getForge($forge)->createWarrior(),\Army\Helper::getWeapon(\Army\Helper::getWeaponSoilder($forge)->createWeapon));
+    $armyA[] = array(\Army\Helper::getForge($forge)->createWarrior(),\Army\Helper::getWeapon(\Army\Helper::getWeaponSoilder($forge))->createWeapon());
 	$forge = $forges[rand(0,1)];
-    $armyB[] = array(\Army\Helper::getForge($forge)->createWarrior(),\Army\Helper::getWeapon(\Army\Helper::getWeaponSoilder($forge)->createWeapon));
+    $armyB[] = array(\Army\Helper::getForge($forge)->createWarrior(),\Army\Helper::getWeapon(\Army\Helper::getWeaponSoilder($forge))->createWeapon());
 }
 
 print_r($armyA);

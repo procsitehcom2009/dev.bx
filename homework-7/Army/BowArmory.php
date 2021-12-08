@@ -2,7 +2,7 @@
 
 namespace Army;
 
-class BowForge extends Armory
+class BowArmory extends Armory
 {
 	public function createWeapon():Weapon
 	{
