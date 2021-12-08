@@ -4,7 +4,7 @@ namespace Army;
 
 class Pike implements Weapon
 {
-	public function weapon():string
+	public function typeWeapon():string
 	{
 		return 'pike';
 	}

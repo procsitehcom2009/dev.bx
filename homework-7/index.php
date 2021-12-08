@@ -13,7 +13,7 @@ $forges = [
     'horseman',
 ];
 
-for ($i=0;$i<10;$i++)
+for ($i=0;$i<100;$i++)
 {
 	$forge = $forges[rand(0,1)];
     $armyA[] = array(\Army\Helper::getForge($forge)->createWarrior(),\Army\Helper::getWeapon(\Army\Helper::getWeaponSoilder($forge))->createWeapon());
@@ -23,15 +23,3 @@ for ($i=0;$i<10;$i++)
 
 print_r($armyA);
 print_r($armyB);
-
-/*$calculatePower = function ($sum, $warrior)
-{
-    $sum += $warrior->power();
-    return $sum;
-};
-
-$armyPowerA = array_reduce($armyA,$calculatePower);
-$armyPowerB = array_reduce($armyB,$calculatePower);
-
-echo $armyPowerA, PHP_EOL;
-echo $armyPowerB;*/

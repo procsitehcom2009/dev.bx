@@ -8,4 +8,5 @@ class Archer implements Warrior
     {
         return 10;
     }
+
 }

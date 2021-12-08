@@ -4,7 +4,7 @@ namespace Army;
 
 class Bow implements Weapon
 {
-	public function weapon():string
+	public function typeWeapon():string
 	{
 		return 'bow';
 	}
