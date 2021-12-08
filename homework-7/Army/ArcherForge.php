@@ -8,4 +8,5 @@ class ArcherForge extends Forge
     {
         return new Archer();
     }
+
 }
