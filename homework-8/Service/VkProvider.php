@@ -2,14 +2,14 @@
 
 namespace Service;
 
-class VkProvider implements AdverttisementInterface
+class VkProvider implements AdvertisementInterface
 {
-    public function publicate(Advertsement $advertsement)
+    public function publicate(Advertisement $advertisement)
     {
         $httpClient = new HttpClient();
         $result = $httpClient->post("https://vk.com/api/publicate",json_encode([
-            'title'=>$advertsement->getTitle(),
-            'body'=>$advertsement->getTitle(),
+            'title'=>$advertisement->getTitle(),
+            'body'=>$advertisement->getTitle(),
             ]));
 
         if ($result->successed())
