@@ -4,5 +4,5 @@ namespace Service;
 
 interface AdvertisementInterface
 {
-    public function publicate(Advertisement $advertisement);
+    public function publicate(Advertisement $advertisement): AdvertisementResponse;
 }

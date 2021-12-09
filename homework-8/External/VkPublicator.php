@@ -4,7 +4,7 @@ namespace External;
 
 class VkPublicator
 {
-    public function publicate(VkAdvertisement $advertisement)
+    public function publicate(VkAdvertisement $advertisement):VkAdvertisementResult
     {
         //...
 
